@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+    <bean id="atmosphereControllerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="urlMap">
+            <map>
+                <entry key="/pubSub/**">
+                    <bean class="org.springframework.web.servlet.mvc.ServletWrappingController">
+                        <property name="servletClass" value="org.atmosphere.cpr.AtmosphereServlet"/>
+                        <property name="initParameters">
+                            <props>
+                                <prop key="org.atmosphere.useWebSocket">true</prop>
+                                <prop key="org.atmosphere.useNative">true</prop>
+                                <prop key="org.atmosphere.cpr.broadcastFilterClasses">org.atmosphere.client.JavascriptClientFilter</prop>
+                            </props>
+                        </property>
+                    </bean>
+                </entry>
+            </map>
+        </property>
+    </bean>
+</beans>
