@@ -83,7 +83,7 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>${war.plugin.version}</version>
                 <configuration>
-                    <warSourceExcludes>resources/*.properties</warSourceExcludes>
+                    <!--<warSourceExcludes>resources/*.properties</warSourceExcludes>
                     <webResources>
                         <resource>
                             <directory>${project.build.directory}/native2ascii</directory>
@@ -95,7 +95,7 @@
                                 <include>site/**</include>
                             </includes>
                         </resource>
-                    </webResources>
+                    </webResources>-->
                     <archive>
                         <manifestEntries>
                             <Implementation-Title>${project.name}</Implementation-Title>
