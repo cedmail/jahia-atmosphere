@@ -34,10 +34,9 @@
  * only if the new code is made subject to such option by the copyright
  * holder.
  */
-package org.atmosphere.samples.pubsub;
+package org.jahia.modules.atmosphere;
 
 import org.atmosphere.cpr.AtmosphereResourceEvent;
-import org.atmosphere.cpr.AtmosphereResourceEventListener;
 import org.atmosphere.websocket.WebSocketEventListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

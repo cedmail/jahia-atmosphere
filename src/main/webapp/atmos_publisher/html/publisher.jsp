@@ -16,18 +16,17 @@
 <%--@elvariable id="renderContext" type="org.jahia.services.render.RenderContext"--%>
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
-<c:set var="linked" value="${ui:getBindedComponent(currentNode, renderContext, 'j:bindedComponent')}"/>
-<template:addCacheDependency node="${linked}"/>
+<c:set var="channelName" value="${currentNode.properties['name'].string}"/>
 <template:addResources type="javascript" resources="jquery.min.js,jquery.atmosphere.js"/>
 
 <div id='sendMessage'>
     <input id='phrase' type='text'/>
-    <input id="send_message" class='button' name='Publish' value='Publish Message' type="submit"/>
+    <input id="send_message" class='button' name='Publish' value='Publish Message to ${channelName}' type="submit"/>
 </div>
 
 <script type="text/javascript">
     $("#send_message").click(function() {
-        connectedEndpoint["${linked.identifier}"].push("${url.server}${url.context}/atmosphere/pubsub/${linked.identifier}",
+        connectedEndpoint["${channelName}"].push("${url.server}${url.context}/atmosphere/pubsub/absolute/${channelName}",
                 null, $.atmosphere.request = {data: 'message=' + $("#phrase").val()});
     });
 </script>
